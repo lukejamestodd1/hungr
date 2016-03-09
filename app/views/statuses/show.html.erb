@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @status.name %>
+</p>
+
+<p>
+  <strong>Image url:</strong>
+  <%= @status.image_url %>
+  <img src="<%= @status.image_url %>">
+</p>
+
+<%= link_to 'Edit', edit_status_path(@status) %> |
+<%= link_to 'Back', statuses_path %>

@@ -15,4 +15,7 @@
 //= require turbolinks
 //= require underscore
 //= require backbone
+//= require modernizr
+//= require main
+//= require velocity.min 
 //= require spa

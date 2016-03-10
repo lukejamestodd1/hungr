@@ -40,6 +40,18 @@ var Statuses = Backbone.Collection.extend({
 // //================== VIEWS =================//
 
 
+//=== NAV BAR/MENU VIEW ===//
+var HeaderView = Backbone.View.extend({
+  tagName: 'div',
+  className: 'headerView',
+  template: $('#header-template').html(),
+  render: function() {
+    var html = Mustache.render(this.template);
+		this.$el.html(html);
+		return this;
+  }
+});
+
 // //=== HOME PAGE VIEW ===//
 // var MainMenuView = Backbone.View.extend({
 //   tagName: 'div',
@@ -117,16 +129,11 @@ var Router = Backbone.Router.extend({
 	home: function(){
 		setupPage();
 
-	 	console.log('HELLO');
-		var current_user_id = $('#current-user-id').html();
-		console.log(current_user_id);
-		var currentUser = new User({id: current_user_id});
-		currentUser.fetch().done(function(){
-			console.log(currentUser.get('name'));
-			console.log(currentUser);
-		
+		var header = new HeaderView();
+		$('#mainContainer').append(header.render().el);
 
-		});
+		var current_user_id = $('#current-user-id').html();
+		
 
 		// var mainMenu = new MainMenuView();
 		// $('#mainContainer').append(mainMenu.render().el);

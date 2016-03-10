@@ -3,32 +3,117 @@
 <head>
   <title>Appetite</title>
   <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
- 
+ <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<h1>SINGLE PAGE APP - after login</h1>
-  <h1>Welcome back</h1>
-  <h2><%= current_user.name %></h2>
-  <p><%= current_user.id %></p>
-  <a href="/logout">log out</a>
+ <div id="current-user-id">your user id: <%= current_user.id %></div>
 
- <div id="current-user-id"><%= current_user.id %></div>
+ <nav>
+  <ul class="cd-primary-nav">
+      <li><a href="#_=_">See friends</a></li>
+      <li><a href="#0">Add contacts</a></li>
+      <li><a href="#status">Change appetite</a></li>
+      <li><a href="/logout">Sign out</a></li>
+    </ul>
+  </nav>
+  
+  <a href="#_=_" class="cd-nav-trigger">Menu<span class="cd-icon"></span></a>
+
 
  <div id="mainContainer">
    
-  
-
  </div>
+
+<!-- ========== HOME PAGE HEADER ======== -->
+<script id="header-template" type="text/mustacheTemplate">
+  <h1>Welcome back</h1>
+  <h2><%= current_user.name %></h2>
+  <a href="/logout">log out</a>
+
+</script>
+
+
+<!-- =========== UPDATE STATUS =========== -->
+
+  <main class="cd-content">
+    
+      <h2 style="color: #ffb441; text-align: center;  font-style: italic" class="animated bounceInRight">Select the food you need</h2>
+      
+      <div class="cd-intro">
+      
+      <h1 style="color:black;" class="animated bounceInLeft">What's your</h1>
+
+    </div>
+    <p>
+      <!-- CHOOSE APPETITE -->
+      <div class="mainContainer">
+
+    <div class="blank">
+    </div>
+
+
+    <div class="icon animated wobble">Appetite<ul class="menu">
+        <li class="spread">
+          <a class="unit" href="#"><img class="menuItem" src="icons/cheers.png">Drinks</a></li>        
+        <li class="spread">
+          <a class="unit" href="#"><img class="menuItem" src="icons/pizza.png">Italian</a></li>        
+        <li class="spread">
+          <a class="unit" href="#"><img class="menuItem" src="icons/burger-and-soda-with-straw.png">American</a></li>        
+        <li class="spread">
+          <a class="unit" href="#"><img class="menuItem" src="icons/bacon.png">Breakfast</a></li>        
+        <li class="spread">
+          <a class="unit" href="#"><img class="menuItem" src="icons/three-balls-ice-cream-cone.png">Dessert</a></li>       
+        <li class="spread">
+          <a class="unit" href="#"><img class="menuItem" src="icons/very-hot-drink-with-shine.png">Coffee</a></li>       
+        <li class="spread">
+          <a class="unit" href="#"><img class="menuItem" src="icons/leaves-of-herbs.png">Healthy</a></li>        
+        <li class="spread">
+          <a class="unit" href="#"><img class="menuItem" src="icons/eggplant-rotated-to-left.png">Other</a></li>       
+        <li class="spread">
+          <a class="unit" href="#"><img class="menuItem" src="icons/rice-bowl-with-chopsticks.png">Asian</a></li>        
+      </ul>
+  </div>
+
+  </div>
+    </p>
+
+    <div class="blank2">
+      </div>
+
+  <div class="center">
+    
+  </div>
+      
+  
+  <h1 class="css3-notification qMark">?</h1>
+      
+  
+  
+  </main> <!-- cd-content -->
+
+  <div class="cd-overlay-nav">
+    <span></span>
+  </div> <!-- cd-overlay-nav -->
+
+  <div class="cd-overlay-content">
+    <span></span>
+  </div> <!-- cd-overlay-content -->
+
+
+ 
+
 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.js"> </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 
   <%= javascript_include_tag 'spa_manifest', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+<%= stylesheet_link_tag    'animate', media: 'all', 'data-turbolinks-track' => true %>
+   <%= stylesheet_link_tag    'reset', media: 'all', 'data-turbolinks-track' => true %>
+   <%= stylesheet_link_tag    'style', media: 'all', 'data-turbolinks-track' => true %>
 
-   
 <script></script>
 
 </body>

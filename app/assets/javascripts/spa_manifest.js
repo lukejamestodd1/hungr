@@ -15,3 +15,4 @@
 //= require turbolinks
 //= require underscore
 //= require backbone
+//= require spa

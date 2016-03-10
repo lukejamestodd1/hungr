@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Appetite</title>
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+ 
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<h1>SINGLE PAGE APP - after login</h1>
+  <h1>Welcome back</h1>
+  <h2><%= current_user.name %></h2>
+  <p><%= current_user.id %></p>
+  <a href="/logout">log out</a>
+
+ <div id="current-user-id"><%= current_user.id %></div>
+
+ <div id="mainContainer">
+   
+  
+
+ </div>
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.js"> </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+
+  <%= javascript_include_tag 'spa_manifest', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
+   
+<script></script>
+
+</body>
+</html>
+
+  

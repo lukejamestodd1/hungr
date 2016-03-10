@@ -1,9 +1,23 @@
 Rails.application.routes.draw do
+  
   resources :statuses
   resources :users
 
+  #home/landing page - before login
+  get '/', to: 'pages#index'
+
+  #login 
   get 'auth/:provider/callback', to: 'sessions#create'
+  
+  #single page app
+  get 'app', to: 'pages#spa'
+
+  #logout
   get 'logout', to: 'sessions#destroy'
+
+
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

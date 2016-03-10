@@ -8,7 +8,7 @@
 </head>
 <body>
 
- <div id="current-user-id">your user id: <%= current_user.id %></div>
+ <div id="current-user-id"><%= current_user.id %></div>
 
  <div class="cd-overlay-nav">
     <span></span>
@@ -36,13 +36,36 @@
 
 <!-- ========== HOME PAGE HEADER ======== -->
 <script id="header-template" type="text/mustacheTemplate">
-  <h1>Welcome back</h1>
-  <h2><%= current_user.name %></h2>
-  <h1>Your current appetite is</h1>
-  <h2><%= current_user.status %></h2>
-  <a href="#status">Change status</a>
+<h2 style="text-align: center;" class="animated bounceInDown">Welcome back</h2>
+<div class="blank3"></div>
+  <h1 style="color: tomato" class="animated flipInX"><%= current_user.name %></h1>
+  <div class="blank"></div>
+  <h2 style="text-align: center;" class="animated bounceInRight">Your current appetite is</h2>
+  <div class="blank3"></div>
+  <div class="statusContainer">
+  <img class="statusImg" src="{{ image_url }}">
+    <h1 style="color: #ffb441; font-style: italic;" class="statusImg animated tada"><%= current_user.status %></h2>
+  <img class="statusImg" src="{{ image_url }}">
+  </div>
+    <div class="blank3"></div>
+  <a style="text-align: center;" href="#status"><h2 class="animated flipInX" style="color: tomato background-color: black;">Change status</h2></a>
+  <div class="blank"></div>
+    <div class="contact-list-div">
+    <h1 class="animated bounceInUp">Your friends<h1>
+      <ul class="contact-list-ul" id="listArea">       
+      </ul>
+    </div>
 </script>
 
+<!-- ========== FRIEND LIST MENU ITEMS ========== -->
+<script id="contact-item-template" type="text/mustacheTemplate">
+  <a href="#users/{{ id }}">
+    <img class="contact-list-li-img" src="http://lorempixum.com/100/100/nature/1" >
+    <h3 class="contact-list-li-h3">{{ name }}</h3>
+    <p class="contact-list-li-p">{{ status }}</p>
+    <p class="contact-list-li-p">200 metres away</p>
+  </a>
+</script>
 
 <!-- =========== UPDATE STATUS PAGE =========== -->
 <script id="change-status-template" type="text/mustacheTemplate">
@@ -68,7 +91,7 @@
 
 <!-- =========== STATUS CHANGE MENU ITEMS =========== -->
 <script id="status-item-template" type="text/mustacheTemplate">
-  <a class="unit" href="#"><img class="menuItem" src="{{ image_url }}">{{ name }}</a>
+  <a class="unit" href="/app#_=_"><img class="menuItem" src="{{ image_url }}">{{ name }}</a>
 </script>
  
 

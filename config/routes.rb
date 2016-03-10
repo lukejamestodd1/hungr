@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   #logout
   get 'logout', to: 'sessions#destroy'
 
+  #to change status
+  patch '/users/:id', to: 'users#update'
+
 
 
 

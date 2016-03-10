@@ -29,10 +29,10 @@ var Statuses = Backbone.Collection.extend({
 	url: 'http://localhost:3000/statuses'
 });
 
-// var Users = Backbone.Collection.extend({
-// 	model: User,
-// 	url: 'http://localhost:3000/users.json'
-// });
+var Users = Backbone.Collection.extend({
+	model: User,
+	url: 'http://localhost:3000/users'
+});
 
 
 
@@ -41,47 +41,27 @@ var Statuses = Backbone.Collection.extend({
 
 //=== NAV BAR/MENU VIEW ===//
 var HeaderView = Backbone.View.extend({
-  tagName: 'div',
-  className: 'headerView',
+  tagName: 'main',
+  className: 'cd-content',
   template: $('#header-template').html(),
   render: function() {
-    var html = Mustache.render(this.template);
+    var html = Mustache.render(this.template, this.model);
 		this.$el.html(html);
 		return this;
   }
 });
 
-// //=== HOME PAGE VIEW ===//
-// var MainMenuView = Backbone.View.extend({
-//   tagName: 'div',
-//   className: 'container',
-//   template: $('#mainMenuTemplate').html(),
-//   render: function() {
-//     var html = Mustache.render(this.template);
-// 		this.$el.html(html);
-// 		return this;
-//   }
-// });
-
-
-// //=== CONTACT ITEM VIEW - nearby friends ===//
-// var ContactItemView = Backbone.View.extend({
-//   tagName: 'div',
-//   className: 'col-md-3 col-sm-6 hero-feature',
-//   template: $('#quizMenuItemTemplate').html(),
-
-//   render: function() {
-//     var html = Mustache.render(this.template, this.model);
-// 		this.$el.html(html);
-//     if (this.model.enabled) {
-//       this.$el.find('#start-quiz').css('display','inline-block')
-//     }
-//     else { //SET BACK TO DISPLAY NONE
-//       this.$el.find('#start-quiz').css('display','none')
-//     }
-// 		return this;
-//   }
-// });
+//=== CONTACTS LIST ITEM VIEW ===//
+var ContactItemView = Backbone.View.extend({
+  tagName: 'li',
+  className: 'contact-list-li animated flipInX',
+  template: $('#contact-item-template').html(),
+  render: function() {
+    var html = Mustache.render(this.template, this.model);
+		this.$el.html(html);
+		return this;
+  }
+});
 
 
 //=== CHANGE STATUS PAGE VIEW ===//
@@ -89,21 +69,6 @@ var StatusChangeView = Backbone.View.extend({
   tagName: 'main',
   className: 'cd-content',
   template: $('#change-status-template').html(),
-
-//   //change user score info when click Submit
-//   events: {
-//   	'click #submitAnswers' : 'saveScore'
-//   },
-
-//   saveScore: function(event){
-//   	var currentUserId = $('.user-id').html()
-//   	$.ajax({
-//   		url: 'http://localhost:3000/api/users/' +currentUserId,
-//   		data: { score: score},
-//   		type: 'patch'
-//   	});
-// 	}, 
-
   render: function() {
     var html = Mustache.render(this.template);
 		this.$el.html(html);
@@ -117,9 +82,21 @@ var StatusItemView = Backbone.View.extend({
   className: 'spread',
   template: $('#status-item-template').html(),
 
-events: {
-  	'click .unit' : 'saveScore'
-  },/////////////CHANGE HERE
+  //change user status when click button
+  events: {
+  	'click .menuItem' : 'changeStatus'
+  },
+
+  changeStatus: function(event){
+  	var currentUserId = $('#current-user-id').html();
+  	var status = this.model.name;
+  	console.log(status);
+		$.ajax({
+			url: 'http://localhost:3000/users/' + currentUserId,
+			data: { status: status},
+			type: 'patch'
+		}); 	
+	},
 
   render: function() {
     var html = Mustache.render(this.template, this.model);
@@ -137,26 +114,30 @@ var Router = Backbone.Router.extend({
 	routes: {
 			"_=_": "home",
 			"status": "updateStatus",
-			"contacts/:id": "showContact"
+			"users/:id": "showContact"
 	},
 
-	
+
 	home: function(){
 		setupPage();
-
-		var header = new HeaderView();
-		$('#mainContainer').append(header.render().el);
-
-		var current_user_id = $('#current-user-id').html();
+		var currentUserId = $('#current-user-id').html();
+		var currentUser = new User({id: currentUserId});
+		currentUser.fetch().done(function(){
+			var status = new Status({name: currentUser.status});
+			status.fetch().done(function(){
+	  		var header = new HeaderView({ model: status});
+				$('#mainContainer').append(header.render().el);
+			}); 
+		});
 		
-		//======to show user friends list
-		// var contacts = new Contacts();
-		// contacts.fetch().done(function(contacts){
-		// 	_.each(contacts, function(contact){
-		// 		var contactItemView = new ContactItemView({ model: contact});
-		// 		$('#listArea').append(contactItemView.render().el);
-		// 	});
-		// });
+		//======to show user friends list - just doing all users atm
+		var contacts = new Users();
+		contacts.fetch().done(function(contacts){
+			_.each(contacts, function(contact){
+				var contactItemView = new ContactItemView({ model: contact});
+				$('#listArea').append(contactItemView.render().el);
+			});
+		});
 	},
 
 	updateStatus: function(){

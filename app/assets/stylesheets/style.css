@@ -1,5 +1,51 @@
+.contact-list-div {
+  margin: 1em;
+}
+
+.contact-list-ul {
+  list-style-type: none;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.contact-list-h3 {
+  font: bold 20px/1.5
+}
+
+.contact-list-li-img {
+  float: left;
+  margin: 0 15px 0 0;
+}
+
+.contact-list-li-p {
+  font: 200 12px/1.5
+}
+
+.contact-list-li {
+  margin: 1em;
+  padding: 10px;
+  overflow: auto;
+  background-color: cornflowerblue;
+  border-radius: 20%;
+
+}
+
+.contact-list-li:hover {
+  background: #eee;
+  cursor: pointer;
+}
+
+.statusContainer{
+  width: 40%;
+  margin: 0 auto;
+}
+
 body{
   background-color: white;
+}
+
+.menuItem{
+  display: inline;
 }
 
 .headerView{
@@ -591,7 +637,7 @@ header {
   transition-delay: 0.4s;
 }
 .cd-nav-trigger::after {
-  background-color: #ffb441;
+  background-color: white;
   -webkit-transform: scale(0);
   -moz-transform: scale(0);
   -ms-transform: scale(0);
@@ -786,6 +832,10 @@ header {
   text-align: center;
   font-size: 20px;
   font-size: 1.25rem;
+}
+
+.cd-content h2 {
+  text-align: center;
 }
 .cd-content p {
   line-height: 1.5;

@@ -11,7 +11,6 @@ var setupPage = function() {
 
 
 
-
 //================= MODELS =================//
 var Status = Backbone.Model.extend({
 	urlRoot: 'http://localhost:3000/statuses'
@@ -65,8 +64,8 @@ var HeaderView = Backbone.View.extend({
 // });
 
 
-// //=== FRIEND UI CARD VIEW - nearby friends ===//
-// var QuizItemTemplateView = Backbone.View.extend({
+// //=== CONTACT ITEM VIEW - nearby friends ===//
+// var ContactItemView = Backbone.View.extend({
 //   tagName: 'div',
 //   className: 'col-md-3 col-sm-6 hero-feature',
 //   template: $('#quizMenuItemTemplate').html(),
@@ -85,11 +84,11 @@ var HeaderView = Backbone.View.extend({
 // });
 
 
-// //=== CHANGE STATUS VIEW ===//
-// var QuizTitlePageView = Backbone.View.extend({
-//   tagName: 'div',
-//   className: 'container',
-//   template: $('#quizTitlePageTemplate').html(),
+//=== CHANGE STATUS VIEW ===//
+var StatusChangeView = Backbone.View.extend({
+  tagName: 'main',
+  className: 'cd-content',
+  template: $('#change-status-template').html(),
 
 //   //change user score info when click Submit
 //   events: {
@@ -103,14 +102,14 @@ var HeaderView = Backbone.View.extend({
 //   		data: { score: score},
 //   		type: 'patch'
 //   	});
-// 	},
+// 	}, , this.model.toJSON()
 
-//   render: function() {
-//     var html = Mustache.render(this.template, this.model.toJSON());
-// 		this.$el.html(html);
-// 		return this;
-//   }
-// });
+  render: function() {
+    var html = Mustache.render(this.template);
+		this.$el.html(html);
+		return this;
+  }
+});
 
 
 
@@ -120,7 +119,6 @@ var Router = Backbone.Router.extend({
 
 	routes: {
 			"_=_": "home",
-			"menu": "showMenu",
 			"status": "updateStatus",
 			"contacts/:id": "showContact"
 	},
@@ -134,65 +132,38 @@ var Router = Backbone.Router.extend({
 
 		var current_user_id = $('#current-user-id').html();
 		
-
-		// var mainMenu = new MainMenuView();
-		// $('#mainContainer').append(mainMenu.render().el);
-		
-		// var quizzes = new Quizzes();
-		// quizzes.fetch().done(function(quizzes){
-		// 	_.each(quizzes, function(quiz){
-		// 		var quizItemTemplate = new QuizItemTemplateView({ model: quiz});
-		// 		$('#listArea').append(quizItemTemplate.render().el);
-
-		// 	});
-		// });
-	},
-
-	
-	showMenu: function(){
-		// setupBody();
-		// var quiz = new Quiz({id: qid});
-		// quiz.fetch().done(function(){
-		// 	console.log(quiz);
-		// 	var quizTitlePageView = new QuizTitlePageView({model: quiz});
-		// 	$('#mainContainer').append(quizTitlePageView.render().el);
-
-		// 	var questionsAll = new Questions();
-		// 	questionsAll.fetch().done(function(questions){
-
-		// 		var questions = questionsAll.where({quiz_id: parseInt(qid)});
-
-		// 		_.each(questions, function(question){
-		// 			// console.log(question);
-		// 			//make a question view template for each Q
-		// 			var questionTemplate = new QuestionPageView({model: question});
-		// 			$('#mainContainer').append(questionTemplate.render().el);
-
-		// 			//hide other questions - do this later
-
-		// 		});
+		//======to show user friends list
+		// var contacts = new Contacts();
+		// contacts.fetch().done(function(contacts){
+		// 	_.each(contacts, function(contact){
+		// 		var contactItemView = new ContactItemView({ model: contact});
+		// 		$('#listArea').append(contactItemView.render().el);
 		// 	});
 		// });
 	},
 
 	updateStatus: function(){
+		setupPage();
+		var statusChangeView = new StatusChangeView();
+		$('#mainContainer').append(statusChangeView.render().el);
+
 		var statuses = new Statuses();
-		statuses.fetch().done(function(){
-
-
+		statuses.fetch().done(function(statuses){
+			_.each(statuses, function(status){
+				console.log(status.name);
+				var statusItemView = new StatusItemView({ model: status});
+				$('#listArea').append(statusItemView.render().el);
+			});
 
 		});
+
 	},
 
 	
-	showResults: function(){
-		
-	},
-
-	
-	showTotals: function(){
+	showContact: function(){
 		
 	}
+
 });
 
 //============== START ROUTER ==============//

@@ -84,7 +84,7 @@ var HeaderView = Backbone.View.extend({
 // });
 
 
-//=== CHANGE STATUS VIEW ===//
+//=== CHANGE STATUS PAGE VIEW ===//
 var StatusChangeView = Backbone.View.extend({
   tagName: 'main',
   className: 'cd-content',
@@ -102,10 +102,27 @@ var StatusChangeView = Backbone.View.extend({
 //   		data: { score: score},
 //   		type: 'patch'
 //   	});
-// 	}, , this.model.toJSON()
+// 	}, 
 
   render: function() {
     var html = Mustache.render(this.template);
+		this.$el.html(html);
+		return this;
+  }
+});
+
+//=== STATUS MENU ITEM VIEW ===//
+var StatusItemView = Backbone.View.extend({
+  tagName: 'li',
+  className: 'spread',
+  template: $('#status-item-template').html(),
+
+events: {
+  	'click .unit' : 'saveScore'
+  },/////////////CHANGE HERE
+
+  render: function() {
+    var html = Mustache.render(this.template, this.model);
 		this.$el.html(html);
 		return this;
   }

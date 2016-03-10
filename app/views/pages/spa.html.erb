@@ -10,6 +10,14 @@
 
  <div id="current-user-id">your user id: <%= current_user.id %></div>
 
+ <div class="cd-overlay-nav">
+    <span></span>
+  </div>
+
+  <div class="cd-overlay-content">
+    <span></span>
+  </div>
+
  <nav>
   <ul class="cd-primary-nav">
       <li><a href="#_=_">See friends</a></li>
@@ -30,12 +38,13 @@
 <script id="header-template" type="text/mustacheTemplate">
   <h1>Welcome back</h1>
   <h2><%= current_user.name %></h2>
-  <a href="/logout">log out</a>
+  <h1>Your current appetite is</h1>
+  <h2><%= current_user.status %></h2>
   <a href="#status">Change status</a>
 </script>
 
 
-<!-- =========== UPDATE STATUS =========== -->
+<!-- =========== UPDATE STATUS PAGE =========== -->
 <script id="change-status-template" type="text/mustacheTemplate">
   <main class="cd-content">
     <h2 style="color: #ffb441; text-align: center;  font-style: italic" class="animated bounceInRight">Select the food you need</h2>
@@ -46,25 +55,7 @@
       <div class="mainContainer">
         <div class="blank"></div>
         <div class="icon animated wobble">Appetite
-          <ul class="menu" id="listArea">
-            <li class="spread">
-              <a class="unit" href="#"><img class="menuItem" src="icons/cheers.png">Drinks</a></li>        
-            <li class="spread">
-              <a class="unit" href="#"><img class="menuItem" src="icons/pizza.png">Italian</a></li>        
-            <li class="spread">
-              <a class="unit" href="#"><img class="menuItem" src="icons/burger-and-soda-with-straw.png">American</a></li>        
-            <li class="spread">
-              <a class="unit" href="#"><img class="menuItem" src="icons/bacon.png">Breakfast</a></li>        
-            <li class="spread">
-              <a class="unit" href="#"><img class="menuItem" src="icons/three-balls-ice-cream-cone.png">Dessert</a></li>       
-            <li class="spread">
-              <a class="unit" href="#"><img class="menuItem" src="icons/very-hot-drink-with-shine.png">Coffee</a></li>       
-            <li class="spread">
-              <a class="unit" href="#"><img class="menuItem" src="icons/leaves-of-herbs.png">Healthy</a></li>        
-            <li class="spread">
-              <a class="unit" href="#"><img class="menuItem" src="icons/eggplant-rotated-to-left.png">Other</a></li>       
-            <li class="spread">
-              <a class="unit" href="#"><img class="menuItem" src="icons/rice-bowl-with-chopsticks.png">Asian</a></li>        
+          <ul class="menu" id="listArea">       
           </ul>
         </div>
       </div>
@@ -74,17 +65,11 @@
     <h1 class="css3-notification qMark">?</h1>
   </main>
 </script>
-   <!-- cd-content -->
 
-  <div class="cd-overlay-nav">
-    <span></span>
-  </div> <!-- cd-overlay-nav -->
-
-  <div class="cd-overlay-content">
-    <span></span>
-  </div> <!-- cd-overlay-content -->
-
-
+<!-- =========== STATUS CHANGE MENU ITEMS =========== -->
+<script id="status-item-template" type="text/mustacheTemplate">
+  <a class="unit" href="#"><img class="menuItem" src="{{ image_url }}">{{ name }}</a>
+</script>
  
 
 

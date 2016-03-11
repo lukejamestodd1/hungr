@@ -45,7 +45,7 @@ var HeaderView = Backbone.View.extend({
   className: 'cd-content',
   template: $('#header-template').html(),
   render: function() {
-    var html = Mustache.render(this.template, this.model);
+    var html = Mustache.render(this.template, this.model.toJSON());
 		this.$el.html(html);
 		return this;
   }
@@ -87,15 +87,35 @@ var StatusItemView = Backbone.View.extend({
   	'click .menuItem' : 'changeStatus'
   },
 
+ //  initialize: function() {
+ //  	this.listenTo(this.model, 'change', this.render);
+	// },
+
   changeStatus: function(event){
-  	var currentUserId = $('#current-user-id').html();
+  	var that = this;
   	var status = this.model.name;
   	console.log(status);
+  	var currentUserId = $('#current-user-id').html();
+		
+		// var currentUser = new User({id: currentUserId});
+		// currentUser.fetch().done(function(){
+		// 	currentUser.status = status;
+		// 	currentUser.save();
+		// });
+
+  	//AJAX METHOD for updating DB
 		$.ajax({
 			url: 'http://localhost:3000/users/' + currentUserId,
 			data: { status: status},
 			type: 'patch'
-		}); 	
+		}).done(function(data){
+			that.render();
+		});
+
+		//BACKBONE METHOD - make a model user and
+		//make view listen to model after user.save()
+		//make an initialize method
+		//listen to the model, render when changed..
 	},
 
   render: function() {
@@ -112,8 +132,8 @@ var StatusItemView = Backbone.View.extend({
 var Router = Backbone.Router.extend({
 
 	routes: {
-			"_=_": "home",
-			"status": "updateStatus",
+			"_=_": "updateStatus",
+			"friends": "home",
 			"users/:id": "showContact"
 	},
 
@@ -122,17 +142,17 @@ var Router = Backbone.Router.extend({
 		setupPage();
 		var currentUserId = $('#current-user-id').html();
 		var currentUser = new User({id: currentUserId});
-		currentUser.fetch().done(function(){
-			var status = new Status({name: currentUser.status});
-			status.fetch().done(function(){
-	  		var header = new HeaderView({ model: status});
-				$('#mainContainer').append(header.render().el);
-			}); 
-		});
+  		currentUser.fetch().done(function(){
+  		var header = new HeaderView({ model: currentUser});
+  		console.log('hghgCURRENTUSER',currentUser);
+			$('#mainContainer').append(header.render().el);
+  	}); 
 		
 		//======to show user friends list - just doing all users atm
 		var contacts = new Users();
 		contacts.fetch().done(function(contacts){
+			//don't need 'toJSON' here because it's an array or objects.
+			//if sending one model must convert to JSON
 			_.each(contacts, function(contact){
 				var contactItemView = new ContactItemView({ model: contact});
 				$('#listArea').append(contactItemView.render().el);
@@ -171,3 +191,21 @@ $(document).ready( function() {
   Backbone.history.start();
 });
 
+// BACKBONE METHOD FOR CHANGING DATABASE
+// var DetailsView = Backbone.View.extend({
+
+//   initialize: function() {
+//     this.listenTo(this.model, 'change', this.render);
+//   },
+
+//   render: function() {
+//     var template = $('#details-template').html();
+//     var html = Mustache.render(
+//       template, 
+//       this.model.toJSON()
+//     );
+
+//     this.$el.html(html);
+//     return this;
+//   }
+// });

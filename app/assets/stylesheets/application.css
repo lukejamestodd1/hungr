@@ -12,9 +12,9 @@
  *
  *= require_tree .
  *= require_self
+ *= require_baseIndex
+ *= require_styleIndex
  */
 
-img{
-	max-width: 30px;
-	max-height: 30px;
-}
+
+

@@ -8,26 +8,46 @@
   margin: 0 auto;
 }
 
-.contact-list-h3 {
+.contact-list-li-h3 {
   font: bold 20px/1.5
+  float: left;
 }
 
-.contact-list-li-img {
+.li-img {
   float: left;
   margin: 0 15px 0 0;
+  border-radius: 50%;
 }
 
 .contact-list-li-p {
+  font: 200 12px/1.5;
+  float: left;
+  padding-left: 20px;
+  
+}
+.contact-list-li-p2 {
   font: 200 12px/1.5
 }
 
 .contact-list-li {
   margin: 1em;
-  padding: 10px;
+  padding: 30px;
   overflow: auto;
-  background-color: cornflowerblue;
-  border-radius: 20%;
+  border-top: solid;
+  display: inline;
+  border-radius: 10%;
+  display: -webkit-flex;
+  display: flex;
+   -webkit-flex-direction: row /* works with row or column */
+   flex-direction: row;
+   -webkit-align-items: center;
+   align-items: center;
+   -webkit-justify-content: center;
+   justify-content: center;
+}
 
+.rowzz{
+  
 }
 
 .contact-list-li:hover {

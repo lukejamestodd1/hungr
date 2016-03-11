@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Appetite</title>
+  <title>Hungr</title>
   <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
@@ -20,13 +20,13 @@
 
  <nav>
   <ul class="cd-primary-nav">
-      <li><a href="#_=_">See friends</a></li>
-      <li><a href="#0">Add contacts</a></li>
-      <li><a href="#status">Change appetite</a></li>
-      <li><a href="/logout">Sign out</a></li>
+      <li><a href="#friends">See people</a></li>
+      <li><a href="#0">Add more people</a></li>
+      <li><a href="#_=_">Change Hungr</a></li>
+      <li><a href="/logout">Leave Hungr</a></li>
     </ul>
   </nav>
-  
+
   <a href="#_=_" class="cd-nav-trigger">Menu<span class="cd-icon"></span></a>
 
 
@@ -40,15 +40,15 @@
 <div class="blank3"></div>
   <h1 style="color: tomato" class="animated flipInX"><%= current_user.name %></h1>
   <div class="blank"></div>
-  <h2 style="text-align: center;" class="animated bounceInRight">Your current appetite is</h2>
+  <h2 style="text-align: center;" class="animated bounceInRight">Your Hungr now is: </h2>
   <div class="blank3"></div>
   <div class="statusContainer">
   <img class="statusImg" src="{{ image_url }}">
-    <h1 style="color: #ffb441; font-style: italic;" class="statusImg animated tada"><%= current_user.status %></h2>
+    <h1 style="color: #ffb441; font-style: italic;" class="statusImg animated tada">{{ status }}</h2>
   <img class="statusImg" src="{{ image_url }}">
   </div>
     <div class="blank3"></div>
-  <a style="text-align: center;" href="#status"><h2 class="animated flipInX" style="color: tomato background-color: black;">Change status</h2></a>
+  <a style="text-align: center;" href="#_=_"><h2 class="animated flipInX" style="color: tomato background-color: black;">Choose a different Hungr</h2></a>
   <div class="blank"></div>
     <div class="contact-list-div">
     <h1 class="animated bounceInUp">Your friends<h1>
@@ -59,25 +59,28 @@
 
 <!-- ========== FRIEND LIST MENU ITEMS ========== -->
 <script id="contact-item-template" type="text/mustacheTemplate">
-  <a href="#users/{{ id }}">
-    <img class="contact-list-li-img" src="http://lorempixum.com/100/100/nature/1" >
-    <h3 class="contact-list-li-h3">{{ name }}</h3>
-    <p class="contact-list-li-p">{{ status }}</p>
-    <p class="contact-list-li-p">200 metres away</p>
+  <a href="#users/{{ id }}"><div class="rowzz"
+    <img class="contact-list-li-p li-img" src="http://lorempixum.com/100/100/nature/1" >
+    <h3 class="contact-list-li-p">{{ name }}</h3>
+    <p class="contact-list-li-p">wants {{ status }}</p>
+    <p class="contact-list-li-p" style="color: cornflowerblue; size: 0.5em">about 200 metres away</p></div>
   </a>
+
 </script>
 
 <!-- =========== UPDATE STATUS PAGE =========== -->
 <script id="change-status-template" type="text/mustacheTemplate">
   <main class="cd-content">
-    <h2 style="color: #ffb441; text-align: center;  font-style: italic" class="animated bounceInRight">Select the food you need</h2>
+  <h2 style="text-align: center;" class="animated bounceInDown">Welcome back</h2>
+<div class="blank3"></div>
+  <h1 style="color: tomato" class="animated flipInX"><%= current_user.name %></h1>
     <div class="cd-intro">
-      <h1 style="color:black;" class="animated bounceInLeft">What&#39s your</h1>
+      <h1 style="color:black;" class="animated bounceInLeft">What is your</h1>
     </div>
     <p>
       <div class="mainContainer">
         <div class="blank"></div>
-        <div class="icon animated wobble">Appetite
+        <div class="icon animated wobble">Hungr
           <ul class="menu" id="listArea">       
           </ul>
         </div>
@@ -86,12 +89,14 @@
     <div class="blank2"></div>
     <div class="center"></div>
     <h1 class="css3-notification qMark">?</h1>
+    <div class="blank3"></div>
+    <h2 style="color: #ffb441; text-align: center;  font-style: italic" class="animated bounceInRight">Select the food you need</h2>
   </main>
 </script>
 
 <!-- =========== STATUS CHANGE MENU ITEMS =========== -->
 <script id="status-item-template" type="text/mustacheTemplate">
-  <a class="unit" href="/app#_=_"><img class="menuItem" src="{{ image_url }}">{{ name }}</a>
+  <a class="unit" href="/app#friends"><img class="menuItem" src="{{ image_url }}">{{ name }}</a>
 </script>
  
 

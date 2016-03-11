@@ -40,6 +40,6 @@ statuses = Status.create([
 	{name: 'Dessert', image_url: "/icons/three-balls-ice-cream-cone.png"},
 	{name: 'Coffee', image_url: "/icons/very-hot-drink-with-shine.png"},
 	{name: 'Healthy', image_url: "/icons/leaves-of-herbs.png"},
-	{name: 'Other', image_url: "/icons/eggplant-rotated-to-left.png"},
+	{name: 'Other', image_url: "/icons/restaurant-utensils.png"},
 	{name: 'Asian', image_url: "/icons/rice-bowl-with-chopsticks.png"}
 	]);

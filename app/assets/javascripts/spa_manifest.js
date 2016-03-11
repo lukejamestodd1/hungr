@@ -18,4 +18,7 @@
 //= require modernizr
 //= require main
 //= require velocity.min 
+//= require spaModels
+//= require spaViews
+//= require spaRouter
 //= require spa

@@ -1,28 +1,10 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app lets you find people nearby who want the same thing to eat as you
 
-Things you may want to cover:
+Users log in and choose their desired food, and then see a list of other users who want the same thing.
 
-* Ruby version
+So far the Facebook login, change status, and view other users functions are working. The backend is built with Ruby on Rails, and I used Backbone and Mustache templating for the front end single page app.
 
-* System dependencies
+I still need to add messaging functionality, user profile views, and make a proper menu/control panel. After that I'll experiment with Facebook friend list data and use the Google Maps API to get user locations.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.

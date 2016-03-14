@@ -3,9 +3,9 @@
 var Router = Backbone.Router.extend({
 
 	routes: {
-			"_=_": "updateStatus",
+			"_=_": "home",
 			"menu": "showMenu",
-			"friends": "home",
+			"status": "updateStatus",
 			"users/:id": "showContact",
 			"networks": "addContacts"
 	},
@@ -33,6 +33,12 @@ var Router = Backbone.Router.extend({
 		});
 	},
 
+	//===== MENU =====//
+	showMenu: function(){
+		setupPage();
+		
+	},
+
 	//=========== UPDATE STATUS ============= //
 	updateStatus: function(){
 		setupPage();
@@ -49,19 +55,14 @@ var Router = Backbone.Router.extend({
 		});
 	},
 
-	//===== MENU =====//
-	showMenu: function(){
-		
+	//===== USER PROFILE PAGE =====//
+	showContact: function(){
+		setupPage();
 	},
 
 	//===== ADD CONTACTS =====//
 	addContacts: function(){
-		
-	},
-
-	//===== USER PROFILE PAGE =====//
-	showContact: function(){
-		
-	}
+		setupPage();
+	}	
 
 });

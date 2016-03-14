@@ -34,6 +34,7 @@
   padding: 30px;
   overflow: auto;
   border-top: solid;
+  border-width: 1px;
   display: inline;
   border-radius: 10%;
   display: -webkit-flex;
@@ -51,6 +52,10 @@
 }
 
 .contact-list-li:hover {
+  background: #eee;
+  cursor: pointer;
+}
+.contact-list-li-p:hover {
   background: #eee;
   cursor: pointer;
 }

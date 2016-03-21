@@ -29,7 +29,7 @@
   
 }
 .contact-list-li-p2 {
-  font: 200 12px/1.5
+  font: 200 12px/1.5;
 }
 
 .contact-list-li {
@@ -42,7 +42,7 @@
   border-radius: 10%;
   display: -webkit-flex;
   display: flex;
-   -webkit-flex-direction: row /* works with row or column */
+   -webkit-flex-direction: row; /* works with row or column */
    flex-direction: row;
    -webkit-align-items: center;
    align-items: center;

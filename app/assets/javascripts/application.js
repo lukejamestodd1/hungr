@@ -16,4 +16,3 @@
 //= require underscore
 //= require backbone
 //= require modernizr
-//= require index

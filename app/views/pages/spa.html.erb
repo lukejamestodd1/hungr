@@ -20,65 +20,20 @@
 
  <nav>
   <ul class="cd-primary-nav">
-      <li><a href="#_=_">See people</a></li>
+      <li><a href="#friends">See people</a></li>
       <li><a href="#networks">Add more people</a></li>
-      <li><a href="#status">Change Hungr</a></li>
+      <li><a href="#_=_">Change Hungr</a></li>
       <li><a href="#users/<%= current_user.id %>">My profile</a></li>
       <li><a href="/logout">Leave Hungr</a></li>
     </ul>
   </nav>
 
-  <a href="#menu" class="cd-nav-trigger">Menu<span class="cd-icon"></span></a>
+  <a href="#" class="cd-nav-trigger">Menu<span class="cd-icon"></span></a>
 
 
  <div id="mainContainer">
    
  </div>
-
-<!-- ========== HOME PAGE HEADER ======== -->
-<script id="header-template" type="text/mustacheTemplate">
-<h2 style="text-align: center;" class="animated bounceInDown">Welcome back</h2>
-<div class="blank3"></div>
-  <a href="#users/<%= current_user.id%>"><h1 style="color: tomato" class="animated flipInX"><%= current_user.name %></h1></a>
-  <div class="blank"></div>
-  <h2 style="text-align: center;" class="animated bounceInRight">Your Hungr now is: </h2>
-  <div class="blank3"></div>
-  <div class="statusContainer">
-  <img class="statusImg" src="{{ image_url }}">
-    <h1 style="color: #ffb441; font-style: italic;" class="statusImg animated tada">{{ status }}</h2>
-  <img class="statusImg" src="{{ image_url }}">
-  </div>
-    <div class="blank3"></div>
-  <a style="text-align: center;" href="#status"><h2 class="animated flipInX" style="color: tomato background-color: black;">Choose a different Hungr</h2></a>
-  <div class="blank"></div>
-    <div class="contact-list-div">
-    <h1 class="animated bounceInUp">Your friends<h1>
-      <ul class="contact-list-ul" id="listArea">       
-      </ul>
-    </div>
-</script>
-
-<!-- ========== HOME PAGE FRIEND LIST/MENU ITEMS ========== -->
-<script id="contact-item-template" type="text/mustacheTemplate">
-  <a href="#users/{{ id }}"><div class="rowzz"
-    <img class="contact-list-li-p li-img" src="http://lorempixum.com/100/100/nature/1" >
-    <h3 class="contact-list-li-p">{{ name }}</h3>
-    <p class="contact-list-li-p">wants {{ status }}</p>
-    <p class="contact-list-li-p" style="color: cornflowerblue; size: 0.5em">about 200 metres away</p></div>
-  </a>
-</script>
-
-<!-- =========== MAIN MENU =========== -->
-<script id="main-menu-template" type="text/mustacheTemplate">
-  <nav>
-  <ul class="cd-primary-nav">
-      <li><a href="#_=_">See people</a></li>
-      <li><a href="#networks">Add more people</a></li>
-      <li><a href="#status">Change Hungr</a></li>
-      <li><a href="/logout">Leave Hungr</a></li>
-    </ul>
-  </nav>
-</script>
 
 <!-- =========== UPDATE STATUS PAGE =========== -->
 <script id="change-status-template" type="text/mustacheTemplate">
@@ -110,7 +65,56 @@
 <script id="status-item-template" type="text/mustacheTemplate">
   <a class="unit" href="/app#friends"><img class="menuItem" src="{{ image_url }}">{{ name }}</a>
 </script>
- 
+
+<!-- =========== MAIN MENU =========== -->
+<script id="main-menu-template" type="text/mustacheTemplate">
+   
+   <a href="#menu" class="cd-nav-trigger">Menu<span class="cd-icon"></span></a>
+
+   <nav>
+    <ul class="cd-primary-nav">
+      <li><a href="#friends">See people</a></li>
+      <li><a href="#networks">Add more people</a></li>
+      <li><a href="#_=_">Change Hungr</a></li>
+      <li><a href="#users/<%= current_user.id %>">My profile</a></li>
+      <li><a href="/logout">Leave Hungr</a></li>
+    </ul>
+  </nav>
+</script>
+
+<!-- ========== FRIENDS LIST PAGE HEADER ======== -->
+<script id="header-template" type="text/mustacheTemplate">
+<h2 style="text-align: center;" class="animated bounceInDown">Welcome back</h2>
+<div class="blank3"></div>
+  <a href="#users/<%= current_user.id%>"><h1 style="color: tomato" class="animated flipInX"><%= current_user.name %></h1></a>
+  <div class="blank"></div>
+  <h2 style="text-align: center;" class="animated bounceInRight">Your Hungr now is: </h2>
+  <div class="blank3"></div>
+  <div class="statusContainer">
+  <img class="statusImg" src="{{ image_url }}">
+    <h1 style="color: #ffb441; font-style: italic;" class="statusImg animated tada">{{ status }}</h2>
+  <img class="statusImg" src="{{ image_url }}">
+  </div>
+    <div class="blank3"></div>
+  <a style="text-align: center;" href="#_=_"><h2 class="animated flipInX" style="color: tomato background-color: black;">Choose a different Hungr</h2></a>
+  <div class="blank"></div>
+    <div class="contact-list-div">
+    <h1 class="animated bounceInUp">Your friends<h1>
+      <ul class="contact-list-ul" id="listArea">       
+      </ul>
+    </div>
+</script>
+
+<!-- ========== FRIEND LIST MENU ITEMS ========== -->
+<script id="contact-item-template" type="text/mustacheTemplate">
+  <a href="#users/{{ id }}"><div class="rowzz"
+    <img class="contact-list-li-p li-img" src="http://lorempixum.com/100/100/nature/1" >
+    <h3 class="contact-list-li-p">{{ name }}</h3>
+    <p class="contact-list-li-p">wants {{ status }}</p>
+    <p class="contact-list-li-p" style="color: cornflowerblue; size: 0.5em">about 200 metres away</p></div>
+  </a>
+</script>
+
 <!-- ========== PROFILE PAGE HEADER ======== -->
 <script id="profile-template" type="text/mustacheTemplate">
 <h2 style="text-align: center;" class="animated bounceInDown">Welcome back</h2>

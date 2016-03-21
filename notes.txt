@@ -1,6 +1,6 @@
 TO DO
 -facebook profile images
--main page status icons
+-friends page status icons
 -make menu page
 -user profile pages
 -locations and maps

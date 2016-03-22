@@ -31,7 +31,7 @@ var Router = Backbone.Router.extend({
 
 	},
 
-	//=========== HOME PAGE ============= //
+	//=========== FRIENDS LIST PAGE ============= //
 	friendsList: function(){
 		setupPage();
 		var currentUserId = $('#current-user-id').html();
@@ -47,6 +47,11 @@ var Router = Backbone.Router.extend({
 		contacts.fetch().done(function(contacts){
 			//don't need 'toJSON' here because it's an array or objects.
 			//if sending one model must convert to JSON
+
+			//delete current user from friends list display
+			var currentUserListItem = contacts.get(currentUserId);
+			currentUserListItem.destroy();
+
 			_.each(contacts, function(contact){
 				var contactItemView = new ContactItemView({ model: contact});
 				$('#listArea').append(contactItemView.render().el);

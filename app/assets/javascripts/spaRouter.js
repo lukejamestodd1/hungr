@@ -49,8 +49,8 @@ var Router = Backbone.Router.extend({
 			//if sending one model must convert to JSON
 
 			//delete current user from friends list display
-			var currentUserListItem = contacts.get(currentUserId);
-			currentUserListItem.destroy();
+			// var currentUserListItem = contacts.get(currentUserId);
+			// currentUserListItem.destroy();
 
 			_.each(contacts, function(contact){
 				var contactItemView = new ContactItemView({ model: contact});

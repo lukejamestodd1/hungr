@@ -42,7 +42,7 @@ var StatusItemView = Backbone.View.extend({
 
     //AJAX METHOD for updating DB
     $.ajax({
-      url: 'http://localhost:3000/users/' + currentUserId,
+      url: 'https://hungrapp.herokuapp.com/users/' + currentUserId,
       data: { status: status},
       type: 'patch'
     }).done(function(data){

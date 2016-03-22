@@ -1,18 +1,18 @@
 //================= MODELS & COLLECTIONS =================//
 var Status = Backbone.Model.extend({
-	urlRoot: 'http://localhost:3000/statuses'
+	urlRoot: 'http://hungrapp.herokuapp.com/statuses'
 });
 
 var User = Backbone.Model.extend({
-	urlRoot: 'http://localhost:3000/users'
+	urlRoot: 'http://hungrapp.herokuapp.com/users'
 });
 
 var Statuses = Backbone.Collection.extend({
 	model: Status,
-	url: 'http://localhost:3000/statuses'
+	url: 'http://hungrapp.herokuapp.com/statuses'
 });
 
 var Users = Backbone.Collection.extend({
 	model: User,
-	url: 'http://localhost:3000/users'
+	url: 'http://hungrapp.herokuapp.com/users'
 });

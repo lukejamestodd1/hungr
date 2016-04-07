@@ -36,12 +36,15 @@ var Router = Backbone.Router.extend({
 		setupPage();
 		var currentUserId = $('#current-user-id').html();
 		var currentUser = new User({id: currentUserId});
-  		currentUser.fetch().done(function(){
+  	currentUser.fetch().done(function(){
   		var header = new HeaderView({ model: currentUser});
   		console.log('CURRENTUSER object:',currentUser);
 			$('#mainContainer').append(header.render().el);
-  	}); 
-		
+			getLocation();
+
+  	});
+  		
+  	
 		//to show friends list - just doing all users atm
 		var contacts = new Users();
 		contacts.fetch().done(function(contacts){

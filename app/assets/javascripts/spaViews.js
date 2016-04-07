@@ -30,6 +30,7 @@ var StatusItemView = Backbone.View.extend({
 
   changeStatus: function(event){
     var that = this;
+    //set "status" to name of the food object
     var status = this.model.name;
     console.log(status);
     var currentUserId = $('#current-user-id').html();
@@ -43,6 +44,7 @@ var StatusItemView = Backbone.View.extend({
     //AJAX METHOD for updating DB
     $.ajax({
       url: 'https://hungrapp.herokuapp.com/users/' + currentUserId,
+      // url: 'localhost:3000/users/' + currentUserId,
       data: { status: status},
       type: 'patch'
     }).done(function(data){
@@ -91,12 +93,28 @@ var ContactItemView = Backbone.View.extend({
   tagName: 'li',
   className: 'contact-list-li animated flipInX',
   template: $('#contact-item-template').html(),
+
+
+
+
+
+
+
+
+
+
+
   render: function() {
     var html = Mustache.render(this.template, this.model);
 		this.$el.html(html);
 		return this;
   }
 });
+
+
+
+
+
 
 
 // BACKBONE METHOD FOR CHANGING DATABASE

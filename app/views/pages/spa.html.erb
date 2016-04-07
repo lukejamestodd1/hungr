@@ -84,6 +84,10 @@
 
 <!-- ========== FRIENDS LIST PAGE HEADER ======== -->
 <script id="header-template" type="text/mustacheTemplate">
+
+<h4 style="text-align: center;">Your current location</h4>
+<h4 style="text-align: center;" id="location"></h4>
+
 <h2 style="text-align: center;" class="animated bounceInDown">Welcome back</h2>
 <div class="blank3"></div>
   <a href="#users/<%= current_user.id%>"><h1 style="color: tomato" class="animated flipInX"><%= current_user.name %></h1></a>
@@ -98,6 +102,7 @@
     <div class="blank3"></div>
   <a style="text-align: center;" href="#_=_"><h2 class="animated flipInX" style="color: tomato background-color: black;">Choose a different Hungr</h2></a>
   <div class="blank"></div>
+
     <div class="contact-list-div">
     <h1 class="animated bounceInUp">Your friends<h1>
       <ul class="contact-list-ul" id="listArea">       
